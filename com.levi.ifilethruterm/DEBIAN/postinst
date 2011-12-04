@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "Setting permissions"
+chmod 455 /bin/iFile
+chmod 455 /usr/bin/ifile
+echo "Permissions set"

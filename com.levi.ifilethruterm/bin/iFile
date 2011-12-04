@@ -1,0 +1,87 @@
+#!/bin/sh
+#This package is no longer exclusive to my, #wlt333's repo
+#use this to access files straight from #terminal to iFile
+
+if [ "$(id -u)" -eq 0 ] ; then
+
+#Downloads Directories checks
+if [ ! -e /private/var/mobile/Library/Downloads ] ; then echo "Creating Library/Downloads directory"
+mkdir /private/var/mobile/Library/Downloads
+
+fi
+
+if [ ! -e /private/var/mobile/Media/Downloads ] ; then echo "Creating Library/Downloads directory"
+mkdir /private/var/mobile/Media/Downloads
+
+fi
+
+if [ ! -e /private/var/mobile/Documents ] ; then echo "Creating Documents directory"
+mkdir /private/var/mobile/Documents
+
+fi
+
+if [ ! -e /private/var/mobile/Documents/Documents ] ; then echo "Creating Documents/Documents directory"
+mkdir /private/var/mobile/Documents/Documents
+
+fi
+
+#EricaUtilities check
+if [ ! -e /usr/bin/plutil ] ; then
+        echo "Install erica utilities now, do not exit"
+        apt-get install -y com.ericasadun.utilities 
+        echo "Erica Utilities now installed, exiting now."
+        exit
+fi
+
+#Where would you like to go? #Library/Downloads, Media/Downloads, Last #used folder (cached), home folder, or root #folder?
+
+case "$1" in
+        -h)
+               echo "Opening iFile home folder"
+               openURL iFile:///private/var/mobile ;;
+        -ld)
+               echo "Opening iFile to Library/Downloads folder"
+               openURL iFile:///private/var/mobile/Library/Downloads ;;
+        -md)
+                echo "Opening iFile to Media/Downloads folder"
+               openURL iFile:///private/var/mobile/Media/Downloads ;;
+
+        -l)
+               echo "Opening last-opened (cached) folder."
+               openURL iFile:// ;;
+
+        -r)
+               echo "Opening root (/) folder"
+               openURL iFile:/// ;;
+
+        -I)
+               echo "Opening Installous Downloads"
+               openURL iFile:///private/var/mobile/Documents/Installous/Downloads ;;
+
+        -D)
+               echo "Opening Documents"
+               openURL iFile:///private/var/mobile/Documents ;;
+
+        -DD)
+               echo "Opening Documents"
+               openURL iFile:///private/var/mobile/Documents/Documents ;;
+
+        --help)
+               echo "Usage:
+-h           iFile home
+-ld          Library/Downloads
+-md          Media/Downloads
+-l           Last-used
+-r           root
+-I           Installous Downloads
+-D           Documents
+-DD          Documents/Document" ;;
+
+         *) 
+               echo "'--help' for Usage"
+
+esac ;
+
+else echo "Please run this script as root!"
+
+fi

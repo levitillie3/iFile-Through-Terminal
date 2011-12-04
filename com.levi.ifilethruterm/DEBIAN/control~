@@ -1,0 +1,13 @@
+Package: com.levi.ifilethroughterminal
+Name: iFile through Terminal
+Version: 1.3
+Architecture: iphoneos-arm
+Depiction: http://repo.insanelyi.com/depiction.php?package=ifilethroughterminal
+Description: iFilethruTerm - Open iFile through terminal
+Depends: com.ericasadun.utilities
+Homepage: http://insanelyi.com
+Author: Levi Tillie <levi.tillie3@gmail.com
+Sponsor: Levi Tillie <http://getagripon.com/tillie>
+Section: lScripts
+Maintainer: Levi Tillie <levi.tillie3@gmail.com>
+
